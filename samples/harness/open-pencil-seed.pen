@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "children": [
+    {
+      "id": "seed-root",
+      "type": "frame",
+      "name": "Seed",
+      "x": 0,
+      "y": 0,
+      "width": 375,
+      "height": 812,
+      "fill": [{ "type": "solid", "color": "#FFFFFF" }],
+      "children": []
+    }
+  ]
+}
