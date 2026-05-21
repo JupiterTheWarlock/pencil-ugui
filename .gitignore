@@ -1,6 +1,9 @@
 /FigmaToUnityImporter/
 /references/
 
+# Harness project-local state
+.open-pencil-ugui/
+
 # Local editor and OS files
 .DS_Store
 Thumbs.db

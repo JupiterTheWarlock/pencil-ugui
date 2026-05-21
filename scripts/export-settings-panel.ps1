@@ -21,15 +21,23 @@ finally {
 }
 
 Write-Host "Step 2/2: Export UI IR"
-Push-Location $ExporterDir
-try {
-  npm run export:settings-panel
+$CliPath = Join-Path $RepoRoot "tools/openpencil-ugui-cli/bin/openpencil-ugui.mjs"
+if (Test-Path $CliPath) {
+  node $CliPath export --input "samples/harness/open-pencil-settings-panel.fig" --output "samples/ui-ir/settings-panel.json"
   if ($LASTEXITCODE -ne 0) {
     throw "UI IR export failed with exit code $LASTEXITCODE"
   }
-}
-finally {
-  Pop-Location
+} else {
+  Push-Location $ExporterDir
+  try {
+    npm run export:settings-panel
+    if ($LASTEXITCODE -ne 0) {
+      throw "UI IR export failed with exit code $LASTEXITCODE"
+    }
+  }
+  finally {
+    Pop-Location
+  }
 }
 
 Write-Host ""

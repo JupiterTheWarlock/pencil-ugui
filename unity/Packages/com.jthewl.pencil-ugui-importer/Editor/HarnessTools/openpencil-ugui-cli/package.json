@@ -1,0 +1,11 @@
+{
+  "name": "openpencil-ugui-cli",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "openpencil-ugui": "./bin/openpencil-ugui.mjs"
+  },
+  "scripts": {
+    "doctor": "node ./bin/openpencil-ugui.mjs doctor"
+  }
+}
