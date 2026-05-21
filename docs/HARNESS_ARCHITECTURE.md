@@ -88,6 +88,8 @@ Recommended agent files:
 
 Exact agent installation formats can differ by agent platform, but the installed instructions should point back to `.pencil-ugui/config.json` as the source of project-specific runtime configuration.
 
+The Unity package keeps skill templates under `Editor/Templates/` with Unity `.meta` files for asset management. The skill installer copies only skill content (for example `SKILL.md` and reference docs) into project agent folders and skips or removes `.meta` files so agent directories stay free of Unity metadata.
+
 ## Skill Model
 
 The main project skill should be `pencil-ugui`.

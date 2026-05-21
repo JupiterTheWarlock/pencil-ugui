@@ -110,8 +110,21 @@ namespace OpenPencilUGUI
         {
             Directory.CreateDirectory(destinationDir);
 
+            if (Directory.Exists(destinationDir))
+            {
+                foreach (var metaFile in Directory.GetFiles(destinationDir, "*.meta", SearchOption.AllDirectories))
+                {
+                    File.Delete(metaFile);
+                }
+            }
+
             foreach (var file in Directory.GetFiles(sourceDir, "*", SearchOption.AllDirectories))
             {
+                if (file.EndsWith(".meta", StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
                 var relativePath = file.Substring(sourceDir.Length).TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
                 var destinationPath = Path.Combine(destinationDir, relativePath);
                 Directory.CreateDirectory(Path.GetDirectoryName(destinationPath));
