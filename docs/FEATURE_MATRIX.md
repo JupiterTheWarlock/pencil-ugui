@@ -26,9 +26,9 @@ samples/harness/open-pencil-settings-panel.svg
 Useful commands:
 
 ```powershell
-bun run open-pencil -- info "D:\Users\JtheWL\pencil-unity-ugui\samples\harness\open-pencil-settings-panel.fig" --json
-bun run open-pencil -- tree "D:\Users\JtheWL\pencil-unity-ugui\samples\harness\open-pencil-settings-panel.fig" --depth 3 --json
-bun run open-pencil -- node "D:\Users\JtheWL\pencil-unity-ugui\samples\harness\open-pencil-settings-panel.fig" --id "0:15" --json
+bun run open-pencil -- info "D:\Users\JtheWL\pencil-ugui\samples\harness\open-pencil-settings-panel.fig" --json
+bun run open-pencil -- tree "D:\Users\JtheWL\pencil-ugui\samples\harness\open-pencil-settings-panel.fig" --depth 3 --json
+bun run open-pencil -- node "D:\Users\JtheWL\pencil-ugui\samples\harness\open-pencil-settings-panel.fig" --id "0:15" --json
 ```
 
 ## Matrix

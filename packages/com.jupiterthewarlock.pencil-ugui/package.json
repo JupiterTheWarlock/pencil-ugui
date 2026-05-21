@@ -1,0 +1,11 @@
+{
+  "name": "com.jupiterthewarlock.pencil-ugui",
+  "version": "0.1.0",
+  "displayName": "Pencil UGUI",
+  "description": "Import UI IR JSON into Unity UGUI under an existing Canvas.",
+  "unity": "2021.3",
+  "dependencies": {
+    "com.unity.textmeshpro": "3.0.6",
+    "com.unity.ugui": "1.0.0"
+  }
+}

@@ -110,7 +110,7 @@ Success criteria:
 Create a Unity package under:
 
 ```text
-unity/Packages/com.jthewl.pencil-ugui-importer/
+packages/com.jupiterthewarlock.pencil-ugui/
 ```
 
 Start with a hand-written sample UI IR file before adding OpenPencil extraction.

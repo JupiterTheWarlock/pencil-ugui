@@ -21,7 +21,7 @@ finally {
 }
 
 Write-Host "Step 2/2: Export UI IR"
-$CliPath = Join-Path $RepoRoot "tools/openpencil-ugui-cli/bin/openpencil-ugui.mjs"
+$CliPath = Join-Path $RepoRoot "tools/pencil-ugui-cli/bin/pencil-ugui.mjs"
 if (Test-Path $CliPath) {
   node $CliPath export --input "samples/harness/open-pencil-settings-panel.fig" --output "samples/ui-ir/settings-panel.json"
   if ($LASTEXITCODE -ne 0) {

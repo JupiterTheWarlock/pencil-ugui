@@ -2,6 +2,7 @@
 /references/
 
 # Harness project-local state
+.pencil-ugui/
 .open-pencil-ugui/
 
 # Local editor and OS files

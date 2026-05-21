@@ -211,13 +211,13 @@ Success criteria:
 Planned structure:
 
 ```text
-pencil-unity-ugui/
+pencil-ugui/
   docs/
     PLAN.md
     FEATURE_MATRIX.md
   unity/
     Packages/
-      com.jthewl.pencil-ugui-importer/
+      com.jupiterthewarlock.pencil-ugui/
   samples/
     ui-ir/
     pencil/

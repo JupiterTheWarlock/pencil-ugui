@@ -1,0 +1,12 @@
+{
+  "name": "com.jupiterthewarlock.pencil-ugui.Editor",
+  "rootNamespace": "OpenPencilUGUI",
+  "references": [
+    "Unity.TextMeshPro",
+    "Unity.UGUI"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "autoReferenced": true
+}

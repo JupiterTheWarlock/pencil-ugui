@@ -23,11 +23,11 @@ Commands run:
 
 ```powershell
 bun run open-pencil -- --help
-cmd /c "bun run open-pencil -- eval ""D:\Users\JtheWL\pencil-unity-ugui\samples\harness\open-pencil-seed.pen"" --stdin --output ""D:\Users\JtheWL\pencil-unity-ugui\samples\harness\open-pencil-settings-panel.fig"" --json < ""D:\Users\JtheWL\pencil-unity-ugui\samples\harness\open-pencil-create-settings.js"""
-bun run open-pencil -- info "D:\Users\JtheWL\pencil-unity-ugui\samples\harness\open-pencil-settings-panel.fig" --json
-bun run open-pencil -- tree "D:\Users\JtheWL\pencil-unity-ugui\samples\harness\open-pencil-settings-panel.fig" --depth 3 --json
-cmd /c "bun run open-pencil -- eval ""D:\Users\JtheWL\pencil-unity-ugui\samples\harness\open-pencil-settings-panel.fig"" --stdin --write --json < ""D:\Users\JtheWL\pencil-unity-ugui\samples\harness\open-pencil-update-confirm.js"""
-bun run open-pencil -- export "D:\Users\JtheWL\pencil-unity-ugui\samples\harness\open-pencil-settings-panel.fig" --format svg --output "D:\Users\JtheWL\pencil-unity-ugui\samples\harness\open-pencil-settings-panel.svg"
+cmd /c "bun run open-pencil -- eval ""D:\Users\JtheWL\pencil-ugui\samples\harness\open-pencil-seed.pen"" --stdin --output ""D:\Users\JtheWL\pencil-ugui\samples\harness\open-pencil-settings-panel.fig"" --json < ""D:\Users\JtheWL\pencil-ugui\samples\harness\open-pencil-create-settings.js"""
+bun run open-pencil -- info "D:\Users\JtheWL\pencil-ugui\samples\harness\open-pencil-settings-panel.fig" --json
+bun run open-pencil -- tree "D:\Users\JtheWL\pencil-ugui\samples\harness\open-pencil-settings-panel.fig" --depth 3 --json
+cmd /c "bun run open-pencil -- eval ""D:\Users\JtheWL\pencil-ugui\samples\harness\open-pencil-settings-panel.fig"" --stdin --write --json < ""D:\Users\JtheWL\pencil-ugui\samples\harness\open-pencil-update-confirm.js"""
+bun run open-pencil -- export "D:\Users\JtheWL\pencil-ugui\samples\harness\open-pencil-settings-panel.fig" --format svg --output "D:\Users\JtheWL\pencil-ugui\samples\harness\open-pencil-settings-panel.svg"
 ```
 
 Result:
@@ -53,11 +53,11 @@ Commands run:
 
 ```powershell
 node apps/cli/dist/openpencil-cli.cjs --help
-node apps/cli/dist/openpencil-cli.cjs open --file "D:\Users\JtheWL\pencil-unity-ugui\samples\harness\zseven-settings-panel.op" --pretty
-node apps/cli/dist/openpencil-cli.cjs design "@D:\Users\JtheWL\pencil-unity-ugui\samples\harness\zseven-settings-panel.ops" --file "D:\Users\JtheWL\pencil-unity-ugui\samples\harness\zseven-settings-panel.op" --canvas-width 375 --pretty
-node apps/cli/dist/openpencil-cli.cjs get --file "D:\Users\JtheWL\pencil-unity-ugui\samples\harness\zseven-settings-panel.op" --depth 3 --pretty
-node apps/cli/dist/openpencil-cli.cjs layout --file "D:\Users\JtheWL\pencil-unity-ugui\samples\harness\zseven-settings-panel.op" --depth 3 --pretty
-node apps/cli/dist/openpencil-cli.cjs update T1DgqEQOSaxFsctquh_0I "@D:\Users\JtheWL\pencil-unity-ugui\samples\harness\zseven-root-update.json" --file "D:\Users\JtheWL\pencil-unity-ugui\samples\harness\zseven-settings-panel.op" --pretty
+node apps/cli/dist/openpencil-cli.cjs open --file "D:\Users\JtheWL\pencil-ugui\samples\harness\zseven-settings-panel.op" --pretty
+node apps/cli/dist/openpencil-cli.cjs design "@D:\Users\JtheWL\pencil-ugui\samples\harness\zseven-settings-panel.ops" --file "D:\Users\JtheWL\pencil-ugui\samples\harness\zseven-settings-panel.op" --canvas-width 375 --pretty
+node apps/cli/dist/openpencil-cli.cjs get --file "D:\Users\JtheWL\pencil-ugui\samples\harness\zseven-settings-panel.op" --depth 3 --pretty
+node apps/cli/dist/openpencil-cli.cjs layout --file "D:\Users\JtheWL\pencil-ugui\samples\harness\zseven-settings-panel.op" --depth 3 --pretty
+node apps/cli/dist/openpencil-cli.cjs update T1DgqEQOSaxFsctquh_0I "@D:\Users\JtheWL\pencil-ugui\samples\harness\zseven-root-update.json" --file "D:\Users\JtheWL\pencil-ugui\samples\harness\zseven-settings-panel.op" --pretty
 ```
 
 Result:

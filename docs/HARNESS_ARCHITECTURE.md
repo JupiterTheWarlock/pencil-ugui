@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document captures the target harness for making `pencil-unity-ugui` work as a bridge between AI canvas tools and Unity UGUI.
+This document captures the target harness for making `pencil-ugui` work as a bridge between AI canvas tools and Unity UGUI.
 
 The desired user experience is:
 
@@ -70,7 +70,7 @@ The plugin should write stable project-local files so the agent does not need to
 Recommended project files:
 
 ```text
-.open-pencil-ugui/
+.pencil-ugui/
   config.json
   generated/
   prompts/
@@ -80,21 +80,21 @@ Recommended project files:
 Recommended agent files:
 
 ```text
-.cursor/skills/pencil-unity-ugui/
-.codex/skills/pencil-unity-ugui/
+.cursor/skills/pencil-ugui/
+.codex/skills/pencil-ugui/
 .claude/
 .qoder/
 ```
 
-Exact agent installation formats can differ by agent platform, but the installed instructions should point back to `.open-pencil-ugui/config.json` as the source of project-specific runtime configuration.
+Exact agent installation formats can differ by agent platform, but the installed instructions should point back to `.pencil-ugui/config.json` as the source of project-specific runtime configuration.
 
 ## Skill Model
 
-The main project skill should be `pencil-unity-ugui`.
+The main project skill should be `pencil-ugui`.
 
 This skill is the orchestrator. It should explain how to:
 
-1. Read `.open-pencil-ugui/config.json`.
+1. Read `.pencil-ugui/config.json`.
 2. Validate the harness with `doctor`.
 3. Choose a canvas provider.
 4. Use that provider's reference skill or documentation.
@@ -106,7 +106,7 @@ This skill is the orchestrator. It should explain how to:
 Canvas-specific knowledge should live under references:
 
 ```text
-pencil-unity-ugui/
+pencil-ugui/
   SKILL.md
   references/
     open-pencil/
@@ -143,8 +143,8 @@ Example provider fields:
   "displayName": "Open Pencil",
   "designFileExtension": ".fig",
   "referenceSkill": "references/open-pencil/SKILL.md",
-  "doctorCommand": "openpencil-ugui doctor --provider open-pencil",
-  "exportCommand": "openpencil-ugui export --provider open-pencil --input <fig> --output <json>"
+  "doctorCommand": "pencil-ugui doctor --provider open-pencil",
+  "exportCommand": "pencil-ugui export --provider open-pencil --input <fig> --output <json>"
 }
 ```
 
@@ -244,8 +244,8 @@ The handler registry should expose two things:
 The prompt-time side is important. Agents must know which custom components exist before generating the UI IR. The local server or CLI should expose this with:
 
 ```text
-openpencil-ugui prompt-context
-openpencil-ugui list-handlers
+pencil-ugui prompt-context
+pencil-ugui list-handlers
 ```
 
 This allows project-specific component information to be injected into the agent's prompt without hardcoding it into the base skill.
@@ -302,12 +302,12 @@ The CLI should be thin and predictable.
 Suggested commands:
 
 ```text
-openpencil-ugui doctor
-openpencil-ugui generate
-openpencil-ugui export
-openpencil-ugui import
-openpencil-ugui prompt-context
-openpencil-ugui list-handlers
+pencil-ugui doctor
+pencil-ugui generate
+pencil-ugui export
+pencil-ugui import
+pencil-ugui prompt-context
+pencil-ugui list-handlers
 ```
 
 Early versions can keep `generate` provider-specific and focus on `export` and `import`.
@@ -327,9 +327,9 @@ Recommended order:
 
 1. Keep UI IR as the only Unity importer contract.
 2. Add Unity local server with health and import endpoints.
-3. Add project config under `.open-pencil-ugui/config.json`.
+3. Add project config under `.pencil-ugui/config.json`.
 4. Add setup Editor window and skill installer.
-5. Create `pencil-unity-ugui` skill with `open-pencil` reference.
+5. Create `pencil-ugui` skill with `open-pencil` reference.
 6. Add CLI `doctor`, `export`, `import`, and `prompt-context`.
 7. Run end-to-end from an agent opened at a Unity project root.
 8. Add optional Unity MCP tools for target discovery.
@@ -356,14 +356,14 @@ The MVP is successful when an agent can create a recognizable UI panel through `
 
 Implemented in this repository:
 
-- Unity UI IR importer under `unity/Packages/com.jthewl.pencil-ugui-importer/`
-- Project-local harness config at `.open-pencil-ugui/config.json`
+- Unity UI IR importer under `packages/com.jupiterthewarlock.pencil-ugui/`
+- Project-local harness config at `.pencil-ugui/config.json`
 - Unity setup window at `Tools > Pencil UGUI > Setup...`
 - Unity Editor local server with `/health`, `/config`, `/targets/selection`, and `/import`
 - In-Unity doctor (no manual CLI install required from the setup window)
-- Automatic bootstrap of harness tools into `.open-pencil-ugui/tools/`
+- Automatic bootstrap of harness tools into `.pencil-ugui/tools/`
 - Cursor, Codex, Claude, Qoder, and custom-folder skill installation
-- Thin CLI at `tools/openpencil-ugui-cli/` with `doctor`, `export`, `import`, and `prompt-context`
+- Thin CLI at `tools/pencil-ugui-cli/` with `doctor`, `export`, `import`, and `prompt-context`
 
 Still deferred:
 
@@ -379,20 +379,20 @@ Still deferred:
 3. Set `openPencilDir` to your local `open-pencil/open-pencil` checkout.
 4. Click `Save Config`, then `Start Server`.
 5. Select agent skill targets and click `Install / Update Skill`.
-6. Click `Run Doctor` in the setup window. The window bootstraps harness tools into `.open-pencil-ugui/tools/` automatically.
+6. Click `Run Doctor` in the setup window. The window bootstraps harness tools into `.pencil-ugui/tools/` automatically.
 7. Export a `.fig` file to UI IR:
 
 ```powershell
-node .open-pencil-ugui/tools/openpencil-ugui-cli/bin/openpencil-ugui.mjs export `
+node .pencil-ugui/tools/pencil-ugui-cli/bin/pencil-ugui.mjs export `
   --input path/to/design.fig `
-  --output .open-pencil-ugui/generated/panel.json
+  --output .pencil-ugui/generated/panel.json
 ```
 
 8. Select a `Canvas` in the Unity Hierarchy, then import:
 
 ```powershell
-node .open-pencil-ugui/tools/openpencil-ugui-cli/bin/openpencil-ugui.mjs import `
-  --ui-ir .open-pencil-ugui/generated/panel.json `
+node .pencil-ugui/tools/pencil-ugui-cli/bin/pencil-ugui.mjs import `
+  --ui-ir .pencil-ugui/generated/panel.json `
   --target selection
 ```
 
