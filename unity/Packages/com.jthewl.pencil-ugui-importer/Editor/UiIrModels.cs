@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace JtheWL.PencilUguiImporter
+namespace OpenPencilUGUI
 {
     [Serializable]
     public class UiIrDocument

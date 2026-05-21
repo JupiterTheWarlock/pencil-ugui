@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace JtheWL.PencilUguiImporter
+namespace OpenPencilUGUI
 {
     public static class PencilUgImporter
     {
