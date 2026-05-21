@@ -1,0 +1,284 @@
+{
+  "version": 1,
+  "source": "open-pencil",
+  "documentId": "open-pencil-settings-panel.fig",
+  "nodes": [
+    {
+      "id": "0:5",
+      "name": "Mobile Game Settings Panel",
+      "type": "frame",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 375,
+        "height": 812
+      },
+      "children": [
+        {
+          "id": "0:6",
+          "name": "Settings Card",
+          "type": "frame",
+          "bounds": {
+            "x": 24,
+            "y": 96,
+            "width": 327,
+            "height": 520
+          },
+          "children": [
+            {
+              "id": "0:7",
+              "name": "Title",
+              "type": "text",
+              "bounds": {
+                "x": 8,
+                "y": -64,
+                "width": 100,
+                "height": 100
+              },
+              "children": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.06700000166893005,
+                    "g": 0.09399999678134918,
+                    "b": 0.15299999713897705,
+                    "a": 1
+                  }
+                }
+              ],
+              "text": {
+                "characters": "Settings",
+                "fontSize": 28
+              }
+            },
+            {
+              "id": "0:8",
+              "name": "Music Toggle",
+              "type": "rectangle",
+              "bounds": {
+                "x": 8,
+                "y": 8,
+                "width": 263,
+                "height": 56
+              },
+              "children": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.9330000281333923,
+                    "g": 0.9490000009536743,
+                    "b": 1,
+                    "a": 1
+                  }
+                }
+              ],
+              "cornerRadius": 16
+            },
+            {
+              "id": "0:9",
+              "name": "Music Label",
+              "type": "text",
+              "bounds": {
+                "x": 28,
+                "y": 25,
+                "width": 100,
+                "height": 100
+              },
+              "children": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.12200000137090683,
+                    "g": 0.16099999845027924,
+                    "b": 0.2160000056028366,
+                    "a": 1
+                  }
+                }
+              ],
+              "text": {
+                "characters": "Music",
+                "fontSize": 18
+              }
+            },
+            {
+              "id": "0:10",
+              "name": "Sound Toggle",
+              "type": "rectangle",
+              "bounds": {
+                "x": 8,
+                "y": 80,
+                "width": 263,
+                "height": 56
+              },
+              "children": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.9409999847412109,
+                    "g": 0.9919999837875366,
+                    "b": 0.9570000171661377,
+                    "a": 1
+                  }
+                }
+              ],
+              "cornerRadius": 16
+            },
+            {
+              "id": "0:11",
+              "name": "Sound Label",
+              "type": "text",
+              "bounds": {
+                "x": 28,
+                "y": 97,
+                "width": 100,
+                "height": 100
+              },
+              "children": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.12200000137090683,
+                    "g": 0.16099999845027924,
+                    "b": 0.2160000056028366,
+                    "a": 1
+                  }
+                }
+              ],
+              "text": {
+                "characters": "Sound",
+                "fontSize": 18
+              }
+            },
+            {
+              "id": "0:12",
+              "name": "Language Dropdown",
+              "type": "rectangle",
+              "bounds": {
+                "x": 8,
+                "y": 152,
+                "width": 263,
+                "height": 56
+              },
+              "children": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.9760000109672546,
+                    "g": 0.9800000190734863,
+                    "b": 0.984000027179718,
+                    "a": 1
+                  }
+                }
+              ],
+              "cornerRadius": 16
+            },
+            {
+              "id": "0:13",
+              "name": "Language Label",
+              "type": "text",
+              "bounds": {
+                "x": 28,
+                "y": 169,
+                "width": 100,
+                "height": 100
+              },
+              "children": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.12200000137090683,
+                    "g": 0.16099999845027924,
+                    "b": 0.2160000056028366,
+                    "a": 1
+                  }
+                }
+              ],
+              "text": {
+                "characters": "Language: English",
+                "fontSize": 18
+              }
+            },
+            {
+              "id": "0:14",
+              "name": "Close Button",
+              "type": "rectangle",
+              "bounds": {
+                "x": 8,
+                "y": 280,
+                "width": 118,
+                "height": 56
+              },
+              "children": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.8980000019073486,
+                    "g": 0.906000018119812,
+                    "b": 0.921999990940094,
+                    "a": 1
+                  }
+                }
+              ],
+              "cornerRadius": 18
+            },
+            {
+              "id": "0:15",
+              "name": "Confirm Button",
+              "type": "rectangle",
+              "bounds": {
+                "x": 153,
+                "y": 280,
+                "width": 118,
+                "height": 56
+              },
+              "children": [],
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "color": {
+                    "r": 0.3100000023841858,
+                    "g": 0.2750000059604645,
+                    "b": 0.8980000019073486,
+                    "a": 1
+                  }
+                }
+              ],
+              "cornerRadius": 18
+            }
+          ],
+          "fills": [
+            {
+              "type": "SOLID",
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 1
+              }
+            }
+          ],
+          "cornerRadius": 28
+        }
+      ],
+      "fills": [
+        {
+          "type": "SOLID",
+          "color": {
+            "r": 0.06300000101327896,
+            "g": 0.09399999678134918,
+            "b": 0.15299999713897705,
+            "a": 1
+          }
+        }
+      ]
+    }
+  ]
+}

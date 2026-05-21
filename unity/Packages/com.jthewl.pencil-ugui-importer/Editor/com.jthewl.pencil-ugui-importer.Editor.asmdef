@@ -1,0 +1,12 @@
+{
+  "name": "com.jthewl.pencil-ugui-importer.Editor",
+  "rootNamespace": "JtheWL.PencilUguiImporter",
+  "references": [
+    "Unity.TextMeshPro",
+    "Unity.UGUI"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "autoReferenced": true
+}

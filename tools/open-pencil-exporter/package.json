@@ -1,0 +1,9 @@
+{
+  "name": "open-pencil-exporter",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "export": "node export.mjs",
+    "export:settings-panel": "node export.mjs --input ../../samples/harness/open-pencil-settings-panel.fig --output ../../samples/ui-ir/settings-panel.json"
+  }
+}
