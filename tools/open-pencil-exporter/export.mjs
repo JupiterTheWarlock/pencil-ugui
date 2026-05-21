@@ -133,19 +133,39 @@ function mapFills(fills) {
   return mapped.length ? mapped : undefined;
 }
 
+function estimateTextBounds(text, fontSize, bounds) {
+  const characters = text ?? "";
+  const width = Math.max(Math.round(fontSize * 0.55 * characters.length), Math.round(fontSize));
+  const height = Math.max(Math.round(fontSize * 1.25), Math.round(fontSize));
+  const looksLikePlaceholder = bounds.width >= 100 && bounds.height >= 100;
+
+  if (!looksLikePlaceholder) {
+    return bounds;
+  }
+
+  return {
+    ...bounds,
+    width,
+    height,
+  };
+}
+
 function transformNode(treeNode, detailsById) {
   const detail = detailsById.get(treeNode.id) ?? treeNode;
   const type = mapType(detail.type ?? treeNode.type);
+  const bounds = {
+    x: treeNode.x ?? detail.x ?? 0,
+    y: treeNode.y ?? detail.y ?? 0,
+    width: treeNode.width ?? detail.width ?? 0,
+    height: treeNode.height ?? detail.height ?? 0,
+  };
   const node = {
     id: treeNode.id,
     name: treeNode.name,
     type,
-    bounds: {
-      x: treeNode.x ?? detail.x ?? 0,
-      y: treeNode.y ?? detail.y ?? 0,
-      width: treeNode.width ?? detail.width ?? 0,
-      height: treeNode.height ?? detail.height ?? 0,
-    },
+    bounds: type === "text"
+      ? estimateTextBounds(detail.text, detail.fontSize ?? 14, bounds)
+      : bounds,
     children: [],
   };
 
