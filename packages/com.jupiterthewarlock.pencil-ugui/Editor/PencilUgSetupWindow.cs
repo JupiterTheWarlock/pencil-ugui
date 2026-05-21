@@ -72,6 +72,11 @@ namespace OpenPencilUGUI
             scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
 
             EditorGUILayout.LabelField("Harness Status", EditorStyles.boldLabel);
+            config.serverPort = EditorGUILayout.IntField("Server Port", config.serverPort);
+            DrawEditableFolderField("OpenPencil Dir", ref config.openPencilDir, true);
+            EditorGUILayout.HelpBox(
+                "Path to your open-pencil/open-pencil checkout. It is usually outside the Unity project. Relative paths resolve from the Unity project root.",
+                MessageType.None);
             DrawReadOnlyRow("Config", PencilUgHarnessPaths.ConfigRelativePath);
             DrawReadOnlyRow("Local Server", PencilUgLocalServer.IsRunning
                 ? $"Running on port {PencilUgLocalServer.Port}"
@@ -110,12 +115,7 @@ namespace OpenPencilUGUI
             {
                 using (new EditorGUI.IndentLevelScope())
                 {
-                    DrawEditableFolderField("OpenPencil Dir", ref config.openPencilDir, true);
-                    EditorGUILayout.HelpBox(
-                        "Path to your open-pencil/open-pencil checkout. It is usually outside the Unity project. Relative paths resolve from the Unity project root.",
-                        MessageType.None);
                     DrawReadOnlyRow("Exporter Command", config.exporterCommand);
-                    config.serverPort = EditorGUILayout.IntField("Server Port", config.serverPort);
                     DrawReadOnlyRow("Generated Dir", config.generatedDir);
                     DrawReadOnlyRow("Default Target Mode", config.defaultTargetMode);
                     DrawReadOnlyRow("Provider", config.provider);
