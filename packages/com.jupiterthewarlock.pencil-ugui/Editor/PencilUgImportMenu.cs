@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace OpenPencilUGUI
 {
@@ -9,12 +8,12 @@ namespace OpenPencilUGUI
         [MenuItem("Tools/Pencil UGUI/Import UI IR...")]
         static void ImportUiIr()
         {
-            var canvas = Selection.activeGameObject?.GetComponent<Canvas>();
-            if (canvas == null)
+            var target = PencilUgImportService.GetSelectedImportTarget();
+            if (target == null)
             {
                 EditorUtility.DisplayDialog(
                     "Pencil UGUI Importer",
-                    "Select a Canvas in the Hierarchy before importing UI IR.",
+                    "Select a GameObject with a RectTransform before importing UI IR.",
                     "OK");
                 return;
             }
@@ -27,7 +26,7 @@ namespace OpenPencilUGUI
 
             try
             {
-                PencilUgImporter.Import(jsonPath, canvas);
+                PencilUgImporter.Import(jsonPath, target);
                 Debug.Log($"Imported UI IR from {jsonPath}");
             }
             catch (System.Exception exception)
@@ -40,8 +39,19 @@ namespace OpenPencilUGUI
         [MenuItem("Tools/Pencil UGUI/Import UI IR...", true)]
         static bool ImportUiIrValidate()
         {
-            return Selection.activeGameObject != null
-                && Selection.activeGameObject.GetComponent<Canvas>() != null;
+            return PencilUgImportService.GetSelectedImportTarget() != null;
+        }
+
+        [MenuItem("GameObject/Pencil UGUI/Import UI IR...", false, 49)]
+        static void ImportUiIrFromGameObject()
+        {
+            ImportUiIr();
+        }
+
+        [MenuItem("GameObject/Pencil UGUI/Import UI IR...", true)]
+        static bool ImportUiIrFromGameObjectValidate()
+        {
+            return ImportUiIrValidate();
         }
     }
 }

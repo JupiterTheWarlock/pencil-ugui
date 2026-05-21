@@ -192,7 +192,7 @@ prefab:Assets/UI/MainMenu.prefab:/Canvas/Root
 asset:Assets/UI/MainMenu.prefab
 ```
 
-The first implementation can support only `selection` and selected `Canvas`. Prefab and explicit path targets can be added after the core loop is stable.
+The first implementation can support only `selection` and selected GameObjects whose transform is a `RectTransform`. Prefab and explicit path targets can be added after the core loop is stable.
 
 ## Optional Unity MCP Enhancement
 

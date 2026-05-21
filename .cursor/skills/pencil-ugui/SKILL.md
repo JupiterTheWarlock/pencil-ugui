@@ -19,12 +19,12 @@ Do not guess package install paths. The Unity plugin writes stable project-local
 3. Use the configured canvas provider reference under `references/<provider>/`.
 4. Create or update the provider design file.
 5. Export UI IR JSON with `pencil-ugui export`.
-6. Import UI IR into Unity with `pencil-ugui import` while a Canvas is selected in the Hierarchy.
+6. Import UI IR into Unity with `pencil-ugui import` while a GameObject with a RectTransform is selected in the Hierarchy.
 
 ## Unity Import Rules
 
 - UI IR is the only contract consumed by the Unity importer.
-- Import under an existing Canvas; do not create a new Canvas unless the user asks.
+- Import under the selected RectTransform GameObject; do not create a new Canvas unless the user asks.
 - Preserve stable node ids so repeated imports update instead of duplicate.
 - GameObject names should keep readable names plus node id suffix, for example `Confirm Button [0:15]`.
 

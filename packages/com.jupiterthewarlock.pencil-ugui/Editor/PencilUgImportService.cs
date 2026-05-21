@@ -1,13 +1,12 @@
 using System;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace OpenPencilUGUI
 {
     public static class PencilUgImportService
     {
-        public static Canvas GetSelectedCanvas()
+        public static Transform GetSelectedImportTarget()
         {
             var selected = Selection.activeGameObject;
             if (selected == null)
@@ -15,13 +14,9 @@ namespace OpenPencilUGUI
                 return null;
             }
 
-            var canvas = selected.GetComponent<Canvas>();
-            if (canvas != null)
-            {
-                return canvas;
-            }
-
-            return selected.GetComponentInParent<Canvas>();
+            return selected.transform is RectTransform
+                ? selected.transform
+                : null;
         }
 
         public static SelectionTargetInfo DescribeSelectionTarget()
@@ -36,22 +31,25 @@ namespace OpenPencilUGUI
                 };
             }
 
-            var canvas = GetSelectedCanvas();
-            if (canvas == null)
+            var target = GetSelectedImportTarget();
+            if (target == null)
             {
                 return new SelectionTargetInfo
                 {
                     valid = false,
-                    message = "Select a Canvas or a child of a Canvas."
+                    message = "Select a GameObject with a RectTransform."
                 };
             }
 
+            var targetPath = BuildHierarchyPath(target);
             return new SelectionTargetInfo
             {
                 valid = true,
                 target = "selection",
-                canvasName = canvas.name,
-                canvasPath = BuildHierarchyPath(canvas.transform),
+                targetName = target.name,
+                targetPath = targetPath,
+                canvasName = target.name,
+                canvasPath = targetPath,
                 selectedName = selected.name
             };
         }
@@ -63,14 +61,14 @@ namespace OpenPencilUGUI
                 return ImportResult.Fail($"Unsupported target mode: {targetMode}");
             }
 
-            var canvas = GetSelectedCanvas();
-            if (canvas == null)
+            var target = GetSelectedImportTarget();
+            if (target == null)
             {
-                return ImportResult.Fail("Select a Canvas in the Hierarchy before importing UI IR.");
+                return ImportResult.Fail("Select a GameObject with a RectTransform before importing UI IR.");
             }
 
-            PencilUgImporter.Import(jsonPath, canvas);
-            return ImportResult.Ok(canvas.name, BuildHierarchyPath(canvas.transform));
+            PencilUgImporter.Import(jsonPath, target);
+            return ImportResult.Ok(target.name, BuildHierarchyPath(target));
         }
 
         static string BuildHierarchyPath(Transform transform)
@@ -92,6 +90,8 @@ namespace OpenPencilUGUI
     {
         public bool valid;
         public string target;
+        public string targetName;
+        public string targetPath;
         public string canvasName;
         public string canvasPath;
         public string selectedName;
@@ -103,17 +103,21 @@ namespace OpenPencilUGUI
     {
         public bool ok;
         public string message;
+        public string targetName;
+        public string targetPath;
         public string canvasName;
         public string canvasPath;
 
-        public static ImportResult Ok(string canvasName, string canvasPath)
+        public static ImportResult Ok(string targetName, string targetPath)
         {
             return new ImportResult
             {
                 ok = true,
                 message = "Import completed.",
-                canvasName = canvasName,
-                canvasPath = canvasPath
+                targetName = targetName,
+                targetPath = targetPath,
+                canvasName = targetName,
+                canvasPath = targetPath
             };
         }
 

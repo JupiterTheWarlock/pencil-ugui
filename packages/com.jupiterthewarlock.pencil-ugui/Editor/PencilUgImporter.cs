@@ -12,7 +12,7 @@ namespace OpenPencilUGUI
     {
         static readonly Regex IdSuffixPattern = new Regex(@" \[([^\]]+)\]$", RegexOptions.Compiled);
 
-        public static void Import(string jsonPath, Canvas canvas)
+        public static void Import(string jsonPath, Transform target)
         {
             var json = File.ReadAllText(jsonPath);
             var document = JsonUtility.FromJson<UiIrDocument>(json);
@@ -26,22 +26,22 @@ namespace OpenPencilUGUI
                 throw new System.InvalidOperationException("UI IR documentId is required.");
             }
 
-            var documentRoot = GetOrCreateDocumentRoot(canvas.transform, document.documentId);
+            var documentRoot = GetOrCreateDocumentRoot(target, document.documentId);
             var existingById = CollectExistingNodes(documentRoot);
             foreach (var node in document.nodes)
             {
                 ImportNode(node, documentRoot, existingById);
             }
 
-            EditorUtility.SetDirty(canvas.gameObject);
+            EditorUtility.SetDirty(target.gameObject);
         }
 
-        static Transform GetOrCreateDocumentRoot(Transform canvas, string documentId)
+        static Transform GetOrCreateDocumentRoot(Transform target, string documentId)
         {
             var rootName = $"UI [{documentId}]";
-            for (var i = 0; i < canvas.childCount; i++)
+            for (var i = 0; i < target.childCount; i++)
             {
-                var child = canvas.GetChild(i);
+                var child = target.GetChild(i);
                 if (child.name == rootName)
                 {
                     return child;
@@ -50,7 +50,7 @@ namespace OpenPencilUGUI
 
             var documentRoot = new GameObject(rootName, typeof(RectTransform));
             var rectTransform = documentRoot.GetComponent<RectTransform>();
-            rectTransform.SetParent(canvas, false);
+            rectTransform.SetParent(target, false);
             rectTransform.anchorMin = Vector2.zero;
             rectTransform.anchorMax = Vector2.one;
             rectTransform.offsetMin = Vector2.zero;

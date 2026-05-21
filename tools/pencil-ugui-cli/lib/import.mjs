@@ -25,7 +25,8 @@ export async function runImport(options) {
   }
 
   console.log(payload.message ?? "Import completed.");
-  if (payload.canvasPath) {
-    console.log(`Canvas: ${payload.canvasPath}`);
+  const targetPath = payload.targetPath ?? payload.canvasPath;
+  if (targetPath) {
+    console.log(`Target: ${targetPath}`);
   }
 }
