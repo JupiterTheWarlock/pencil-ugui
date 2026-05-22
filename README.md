@@ -2,7 +2,7 @@
 
 Pencil UGUI 是一个把 AI 画布工具接到 Unity UGUI 的桥接项目。它让 Agent 先在本地画布里生成或修改 UI，再把结果导入到 Unity 现有的 `Canvas` 下面。
 
-当前默认画布来源是 `[open-pencil/open-pencil](https://github.com/open-pencil/open-pencil)`：`.fig` 设计文件会先导出为 UI IR JSON，再由 Unity 插件生成 UGUI 层级。
+当前默认画布来源是 [`open-pencil/open-pencil`](https://github.com/open-pencil/open-pencil)：`.fig` 设计文件会先导出为 UI IR JSON，再由 Unity 插件生成 UGUI 层级。
 
 ## 适合做什么
 
